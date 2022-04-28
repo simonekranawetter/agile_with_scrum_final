@@ -1,0 +1,53 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32328.378
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KenkataWebshop.WebClient", "KenkataWebshop.WebClient\KenkataWebshop.WebClient.csproj", "{26F910F4-BC38-47C5-A139-3B1CF709140E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KenkataWebshop.WebApi", "KenkataWebshop.WebApi\KenkataWebshop.WebApi.csproj", "{C4116E94-D2B8-479C-9585-3761CD1C9FD7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KenkataWebshop.Data", "KenkataWebshop.Data\KenkataWebshop.Data.csproj", "{EF67BFC0-67DE-4EDE-BD39-F4F6B8C800C7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KenKataWebshop.UnitTests", "KenKataWebshop.UnitTests\KenKataWebshop.UnitTests.csproj", "{DFBE1410-0977-4F35-9739-2FB399E8AC42}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Source", "Source", "{D702531A-F760-4BC2-BC71-78654BA18852}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{0E24AC83-692C-4E15-BC22-D2DC452C7719}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{26F910F4-BC38-47C5-A139-3B1CF709140E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{26F910F4-BC38-47C5-A139-3B1CF709140E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{26F910F4-BC38-47C5-A139-3B1CF709140E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{26F910F4-BC38-47C5-A139-3B1CF709140E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C4116E94-D2B8-479C-9585-3761CD1C9FD7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C4116E94-D2B8-479C-9585-3761CD1C9FD7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C4116E94-D2B8-479C-9585-3761CD1C9FD7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C4116E94-D2B8-479C-9585-3761CD1C9FD7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EF67BFC0-67DE-4EDE-BD39-F4F6B8C800C7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EF67BFC0-67DE-4EDE-BD39-F4F6B8C800C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EF67BFC0-67DE-4EDE-BD39-F4F6B8C800C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EF67BFC0-67DE-4EDE-BD39-F4F6B8C800C7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DFBE1410-0977-4F35-9739-2FB399E8AC42}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DFBE1410-0977-4F35-9739-2FB399E8AC42}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DFBE1410-0977-4F35-9739-2FB399E8AC42}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DFBE1410-0977-4F35-9739-2FB399E8AC42}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{26F910F4-BC38-47C5-A139-3B1CF709140E} = {D702531A-F760-4BC2-BC71-78654BA18852}
+		{C4116E94-D2B8-479C-9585-3761CD1C9FD7} = {D702531A-F760-4BC2-BC71-78654BA18852}
+		{EF67BFC0-67DE-4EDE-BD39-F4F6B8C800C7} = {D702531A-F760-4BC2-BC71-78654BA18852}
+		{DFBE1410-0977-4F35-9739-2FB399E8AC42} = {0E24AC83-692C-4E15-BC22-D2DC452C7719}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0F27FE8A-CAB4-4F9C-AFBB-C0718BBBDDEB}
+	EndGlobalSection
+EndGlobal
