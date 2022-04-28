@@ -7,6 +7,7 @@ namespace KenKataWebshop.UnitTests
         [Fact]
         public void Test1()
         {
+            int i = 1;
 
         }
     }
