@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using KenkataWebshop.WebApi.Entities;
+using Microsoft.EntityFrameworkCore;
 
 namespace KenkataWebshop.WebApi
 {
@@ -8,6 +9,8 @@ namespace KenkataWebshop.WebApi
         {
         }
 
+        public DbSet<ProductEntity> Products => Set<ProductEntity>();
+        public DbSet<CategoryEntity> Category => Set<CategoryEntity>();
         
     }
 }
