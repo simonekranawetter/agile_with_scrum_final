@@ -10,7 +10,7 @@ namespace KenkataWebshop.WebApi
         }
 
         public DbSet<ProductEntity> Products => Set<ProductEntity>();
-        public DbSet<CategoryEntity> Category => Set<CategoryEntity>();
+        public DbSet<CategoryEntity> Categories => Set<CategoryEntity>();
         
     }
 }
