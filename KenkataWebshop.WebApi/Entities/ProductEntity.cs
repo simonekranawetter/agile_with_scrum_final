@@ -37,6 +37,6 @@ namespace KenkataWebshop.WebApi.Entities
         public bool IsOnSale { get; set; }
 
         public CategoryEntity Category { get; set; }
-        public Guid CategoryEntityId { get; set; } 
+        public Guid CategoryId { get; set; } 
     }
 }
