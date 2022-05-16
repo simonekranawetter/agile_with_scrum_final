@@ -54,5 +54,19 @@ namespace KenkataWebshop.WebApi.Controllers
 
             return Ok(dtos);
         }
+
+        [HttpGet("{id}")]
+        public async Task<ActionResult<ProductDto>> GetProductById(Guid id)
+        {
+            var entity = await _sqlContext.Products.Include(p => p.Category).Where(p => p.Id == id).FirstOrDefaultAsync();
+
+            if (entity is null)
+            {
+                return NotFound();
+            }
+
+            var dto = entity.MapToDto();
+            return Ok(dto);
+        }
     }
 }
