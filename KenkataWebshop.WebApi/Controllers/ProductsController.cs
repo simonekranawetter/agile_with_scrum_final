@@ -8,12 +8,12 @@ namespace KenkataWebshop.WebApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ProductController : ControllerBase
+    public class ProductsController : ControllerBase
     {
-        private readonly ILogger<ProductController> _logger;
+        private readonly ILogger<ProductsController> _logger;
         private readonly SqlContext _sqlContext;
 
-        public ProductController(ILogger<ProductController> logger, SqlContext sqlContext)
+        public ProductsController(ILogger<ProductsController> logger, SqlContext sqlContext)
         {
             _logger = logger;
             _sqlContext = sqlContext;
@@ -67,6 +67,49 @@ namespace KenkataWebshop.WebApi.Controllers
 
             var dto = entity.MapToDto();
             return Ok(dto);
+        }
+
+        [HttpPut("{id}")]
+        public async Task<ActionResult> UpdateProduct(Guid id, ProductDto productDto)
+        {
+            var entity = await _sqlContext.Products.Include(p => p.Category).Where(p => p.Id == id).FirstOrDefaultAsync();
+
+            if (entity is null)
+            {
+                return BadRequest();
+            }
+            entity.ArticleNumber = productDto.ArticleNumber;
+            entity.Name = productDto.Name;
+            entity.Description = productDto.Description;
+            entity.Color = productDto.Color;
+            entity.Brand = productDto.Brand;
+            entity.Size = productDto.Size;
+            entity.AmountInStock = productDto.AmountInStock;
+            entity.Rating = productDto.Rating;
+            entity.Price = productDto.Price;
+            entity.IsOnSale = productDto.IsOnSale;
+
+            if (entity.Category.Name != productDto.Category)
+            {
+                var categoryEntity = await _sqlContext.Categories.Where(c => c.Name == productDto.Category).FirstOrDefaultAsync();
+
+                if (categoryEntity is null)
+                {
+                    categoryEntity = new CategoryEntity
+                    {
+                        Name = productDto.Category,
+                    };
+
+                    _sqlContext.Categories.Add(categoryEntity);
+                    await _sqlContext.SaveChangesAsync();
+                }                    
+                entity.CategoryId = categoryEntity.Id;
+
+            }
+
+            await _sqlContext.SaveChangesAsync();
+
+            return NoContent();
         }
     }
 }
