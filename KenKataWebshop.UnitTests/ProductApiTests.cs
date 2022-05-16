@@ -2,6 +2,8 @@ using KenkataWebshop.Data;
 using KenkataWebshop.WebApi.Entities;
 using KenkataWebshop.WebApi.Mappings;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using Xunit;
 
 namespace KenKataWebshop.UnitTests
@@ -112,6 +114,70 @@ namespace KenKataWebshop.UnitTests
             Assert.Equal(price, dto.Price);
             Assert.Equal(isOnSale, dto.IsOnSale);
             Assert.Equal(category, dto.Category);
+        }
+
+        [Fact]
+        public void Mapping_List_Of_ProductEntites_To_List_Of_ProductDtos()
+        {
+            //Arrange
+            var productId = Guid.NewGuid();
+            var categoryId = Guid.NewGuid();
+            var articleNumber = "13e37";
+            var name = "Batmobile";
+            var description = "Fast car goes vroom vroom!";
+            var color = "Black and yellow";
+            var brand = "Alfred Inc.";
+            var size = "Huuuuge";
+            var amountInStock = 2;
+            var rating = "Excellent";
+            var price = 13337.1337m;
+            var isOnSale = true;
+            var category = "Awesome Stuff";
+
+            var entities = new List<ProductEntity>
+            {
+                new ProductEntity
+                {
+                    Id = productId,
+                    ArticleNumber = articleNumber,
+                    Name = name,
+                    Description = description,
+                    Color = color,
+                    Brand = brand,
+                    Size = size,
+                    AmountInStock = amountInStock,
+                    Rating = rating,
+                    Price = price,
+                    IsOnSale = isOnSale,
+                    Category = new CategoryEntity
+                    {
+                        Id = categoryId,
+                        Name = category
+                    }
+                }
+            };
+
+            //Act
+
+            var dtos = entities.MapToDto();
+
+            //Assert
+            Assert.Equal(1, dtos.Count());
+
+            var dto = dtos.First();
+            Assert.Equal(productId, dto.Id);
+            Assert.Equal(articleNumber, dto.ArticleNumber);
+            Assert.Equal(name, dto.Name);
+            Assert.Equal(description, dto.Description);
+            Assert.Equal(color, dto.Color);
+            Assert.Equal(brand, dto.Brand);
+            Assert.Equal(size, dto.Size);
+            Assert.Equal(amountInStock,dto.AmountInStock);
+            Assert.Equal(rating, dto.Rating);
+            Assert.Equal(price, dto.Price);
+            Assert.Equal(isOnSale, dto.IsOnSale);
+            Assert.Equal(category, dto.Category);
+
         }
     }
 }

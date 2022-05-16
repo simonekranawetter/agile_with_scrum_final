@@ -49,5 +49,15 @@ namespace KenkataWebshop.WebApi.Mappings
 
             return dto;
         }
+
+        public static List<ProductDto> MapToDto(this List<ProductEntity> entities)
+        {
+            var dtos = new List<ProductDto>();
+            foreach (var entity in entities)
+            {
+                dtos.Add(entity.MapToDto());
+            }
+            return dtos;
+        }
     }
 }
