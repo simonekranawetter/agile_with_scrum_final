@@ -1,6 +1,6 @@
 ﻿using KenkataWebshop.Data;
 using KenkataWebshop.WebApi.Entities;
-using Microsoft.AspNetCore.Http;
+using KenkataWebshop.WebApi.Mappings;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -22,7 +22,7 @@ namespace KenkataWebshop.WebApi.Controllers
         [HttpPost]
         public async Task<ActionResult<ProductDto>> CreateProduct(ProductDto productDto)
         {
-            var productEntity = productDto.MapToEntity();
+            var productEntity = productDto.MapToEnitiy();
 
             var categoryEntity = await _sqlContext.Categories.Where(c => c.Name == productDto.Category).FirstOrDefaultAsync();
 
