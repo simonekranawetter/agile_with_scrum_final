@@ -2,6 +2,7 @@
 using KenkataWebshop.WebApi.Mappings;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace KenkataWebshop.WebApi.Controllers
 {
@@ -27,6 +28,14 @@ namespace KenkataWebshop.WebApi.Controllers
             await _sqlContext.SaveChangesAsync();
 
             return CreatedAtAction("GetCategoryById", new { id = categoryEntity.Id }, categoryEntity.MapToDto());
+        }
+
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<CategoryDto>>> GetAllCategories()
+        {
+            var entities = await _sqlContext.Categories.ToListAsync();
+            var dtos = entities.MapToDto();
+            return Ok(dtos);
         }
     }
 }
