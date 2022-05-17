@@ -47,5 +47,31 @@ namespace KenKataWebshop.UnitTests
             //Assert
             Assert.Equal(name, dto.Category);
         }
+
+        [Fact]
+        public void Mapping_List_Of_CategoryEntities_To_List_Of_CategoryDtos()
+        {
+            //Arrange
+            var name = "Awesome Stuff";
+            var entities = new List<CategoryEntity>
+            {
+               new CategoryEntity
+               {
+                Id = Guid.NewGuid(),
+                Name = name
+               }
+            };
+
+            //Act
+            var dtos = entities.MapToDto();
+
+            //Assert
+            Assert.Equal(1, dtos.Count());
+            
+            var dto = dtos.First();
+            Assert.Equal(name, dto.Category);
+
+        }
+
     }
 }
