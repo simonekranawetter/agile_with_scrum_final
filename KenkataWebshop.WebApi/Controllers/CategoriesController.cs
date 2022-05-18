@@ -68,5 +68,26 @@ namespace KenkataWebshop.WebApi.Controllers
 
             return NoContent();
         }
+
+        [HttpDelete("{id}")]
+        public async Task<ActionResult> DeleteCategory(Guid id)
+        {
+            var entity = await _sqlContext.Categories.Include(c => c.Products).Where(c => c.Id == id).FirstOrDefaultAsync();
+
+            if(entity is null)
+            {
+                return NotFound();
+            }
+
+            if (entity.Products.Count() > 0)
+            {
+                return BadRequest();
+            }
+
+            _sqlContext.Categories.Remove(entity);
+            await _sqlContext.SaveChangesAsync();
+
+            return NoContent();
+        }
     }
 }
