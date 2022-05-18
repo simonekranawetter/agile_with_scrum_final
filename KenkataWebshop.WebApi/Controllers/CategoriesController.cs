@@ -52,5 +52,21 @@ namespace KenkataWebshop.WebApi.Controllers
 
             return Ok(dto);
         }
+
+        [HttpPut("{id}")]
+        public async Task<ActionResult> UpdateCategory(Guid id, CategoryDto categoryDto)
+        {
+            var entity = await _sqlContext.Categories.Where(c=> c.Id == id).FirstOrDefaultAsync();
+
+            if(entity is null)
+            {
+                return NotFound();
+            }
+
+            entity.Name = categoryDto.Category;
+            await _sqlContext.SaveChangesAsync();
+
+            return NoContent();
+        }
     }
 }
