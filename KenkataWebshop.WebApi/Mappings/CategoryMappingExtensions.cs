@@ -9,9 +9,8 @@ namespace KenkataWebshop.WebApi.Mappings
         {
             var entity = new CategoryEntity
             {
-                Id = new Guid(),
                 Name = dto.Category,
-                Products = (IEnumerable<ProductEntity>)dto.Products
+                Products = new List<ProductEntity>()
             };
 
             return entity;
@@ -22,7 +21,7 @@ namespace KenkataWebshop.WebApi.Mappings
             var dto = new CategoryDto
             {
                 Category = entity.Name,
-                Products = (List<ProductDto>)entity.Products
+                Products = entity.Products.MapToDto()
             };
 
             return dto;

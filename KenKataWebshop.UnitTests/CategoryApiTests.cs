@@ -4,8 +4,6 @@ using KenkataWebshop.WebApi.Mappings;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Xunit;
 
 namespace KenKataWebshop.UnitTests
@@ -38,7 +36,8 @@ namespace KenKataWebshop.UnitTests
             var entity = new CategoryEntity
             {
                 Id = Guid.NewGuid(),
-                Name = name
+                Name = name,
+                Products = new List<ProductEntity>()
             };
 
             //Act
@@ -58,7 +57,8 @@ namespace KenKataWebshop.UnitTests
                new CategoryEntity
                {
                 Id = Guid.NewGuid(),
-                Name = name
+                Name = name,
+                Products = new List<ProductEntity>()
                }
             };
 
@@ -70,8 +70,6 @@ namespace KenKataWebshop.UnitTests
             
             var dto = dtos.First();
             Assert.Equal(name, dto.Category);
-
         }
-
     }
 }

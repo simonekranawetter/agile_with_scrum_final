@@ -1,6 +1,5 @@
 ﻿using KenkataWebshop.Data;
 using KenkataWebshop.WebApi.Mappings;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -30,18 +29,13 @@ namespace KenkataWebshop.WebApi.Controllers
             return CreatedAtAction("GetCategoryById", new { id = categoryEntity.Id }, categoryEntity.MapToDto());
         }
 
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<CategoryDto>>> GetAllCategories()
-        {
-            var entities = await _sqlContext.Categories.ToListAsync();
-            var dtos = entities.MapToDto();
-            return Ok(dtos);
-        }
-
         [HttpGet("{id}")]
-        public async Task<ActionResult<CategoryDto>> GetCategoryByCategoryId(Guid id)
+        public async Task<ActionResult<CategoryDto>> GetCategoryById(Guid id)
         {
-            var entity = await _sqlContext.Categories.Include(c => c.Products).Where(c => c.Id == id).FirstOrDefaultAsync();
+            var entity = await _sqlContext.Categories
+                .Include(c => c.Products)
+                .Where(c => c.Id == id)
+                .FirstOrDefaultAsync();
 
             if (entity is null)
             {
@@ -53,10 +47,24 @@ namespace KenkataWebshop.WebApi.Controllers
             return Ok(dto);
         }
 
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<CategoryDto>>> GetAllCategories()
+        {
+            var entities = await _sqlContext.Categories
+                .Include(c => c.Products)
+                .ToListAsync();
+
+            var dtos = entities.MapToDto();
+
+            return Ok(dtos);
+        }
+
         [HttpPut("{id}")]
         public async Task<ActionResult> UpdateCategory(Guid id, CategoryDto categoryDto)
         {
-            var entity = await _sqlContext.Categories.Where(c=> c.Id == id).FirstOrDefaultAsync();
+            var entity = await _sqlContext.Categories
+                .Where(c=> c.Id == id)
+                .FirstOrDefaultAsync();
 
             if(entity is null)
             {
@@ -72,7 +80,10 @@ namespace KenkataWebshop.WebApi.Controllers
         [HttpDelete("{id}")]
         public async Task<ActionResult> DeleteCategory(Guid id)
         {
-            var entity = await _sqlContext.Categories.Include(c => c.Products).Where(c => c.Id == id).FirstOrDefaultAsync();
+            var entity = await _sqlContext.Categories
+                .Include(c => c.Products)
+                .Where(c => c.Id == id)
+                .FirstOrDefaultAsync();
 
             if(entity is null)
             {
