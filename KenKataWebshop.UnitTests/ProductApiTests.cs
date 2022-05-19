@@ -61,7 +61,7 @@ namespace KenKataWebshop.UnitTests
         }
 
         [Fact]
-        public void ProductEntity_To_ProductDto()
+        public void Mapping_ProductEntity_To_ProductDto()
         {
             //Arrange
             var productId = Guid.NewGuid();
