@@ -9,7 +9,6 @@ namespace KenkataWebshop.WebApi.Mappings
         {
             var entity = new ProductEntity
             {
-                Id = dto.Id,
                 ArticleNumber = dto.ArticleNumber,
                 Name = dto.Name,
                 Description = dto.Description,
@@ -20,10 +19,6 @@ namespace KenkataWebshop.WebApi.Mappings
                 Rating = dto.Rating,
                 Price = dto.Price,
                 IsOnSale = dto.IsOnSale,
-                Category = new CategoryEntity
-                {
-                    Name = dto.Category,
-                }
             };
 
             return entity;
@@ -50,13 +45,14 @@ namespace KenkataWebshop.WebApi.Mappings
             return dto;
         }
 
-        public static List<ProductDto> MapToDto(this List<ProductEntity> entities)
+        public static List<ProductDto> MapToDto(this IEnumerable<ProductEntity> entities)
         {
             var dtos = new List<ProductDto>();
             foreach (var entity in entities)
             {
                 dtos.Add(entity.MapToDto());
             }
+
             return dtos;
         }
     }

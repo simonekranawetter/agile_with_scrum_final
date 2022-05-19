@@ -57,7 +57,7 @@ namespace KenKataWebshop.UnitTests
             Assert.Equal(rating, productEntity.Rating);
             Assert.Equal(price, productEntity.Price);
             Assert.Equal(isOnSale, productEntity.IsOnSale);
-            Assert.Equal(category, productEntity.Category.Name);
+            Assert.Null(productEntity.Category);
         }
 
         [Fact]
@@ -158,7 +158,6 @@ namespace KenKataWebshop.UnitTests
             };
 
             //Act
-
             var dtos = entities.MapToDto();
 
             //Assert
@@ -172,12 +171,11 @@ namespace KenKataWebshop.UnitTests
             Assert.Equal(color, dto.Color);
             Assert.Equal(brand, dto.Brand);
             Assert.Equal(size, dto.Size);
-            Assert.Equal(amountInStock,dto.AmountInStock);
+            Assert.Equal(amountInStock, dto.AmountInStock);
             Assert.Equal(rating, dto.Rating);
             Assert.Equal(price, dto.Price);
             Assert.Equal(isOnSale, dto.IsOnSale);
             Assert.Equal(category, dto.Category);
-
         }
     }
 }

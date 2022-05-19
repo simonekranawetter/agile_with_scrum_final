@@ -24,13 +24,15 @@ namespace KenkataWebshop.WebApi.Controllers
         {
             var productEntity = productDto.MapToEnitiy();
 
-            var categoryEntity = await _sqlContext.Categories.Where(c => c.Name == productDto.Category).FirstOrDefaultAsync();
+            var categoryEntity = await _sqlContext.Categories
+                .Where(c => c.Name == productDto.Category)
+                .FirstOrDefaultAsync();
 
             if (categoryEntity is null)
             {
                 categoryEntity = new CategoryEntity
                 {
-                    Name = productDto.Name,
+                    Name = productDto.Category,
                 };
 
                 _sqlContext.Categories.Add(categoryEntity);
@@ -42,23 +44,16 @@ namespace KenkataWebshop.WebApi.Controllers
 
             await _sqlContext.SaveChangesAsync();
 
-            return CreatedAtAction("GetProductById", new { id = productEntity.Id}, productEntity.MapToDto());
-        }
-
-        [HttpGet]
-        public async Task<ActionResult<ProductDto>> GetAllProducts()
-        {
-            var entities = await _sqlContext.Products.Include(p => p.Category).ToListAsync();
-
-            var dtos = entities.MapToDto();
-
-            return Ok(dtos);
+            return CreatedAtAction("GetProductById", new { id = productEntity.Id }, productEntity.MapToDto());
         }
 
         [HttpGet("{id}")]
         public async Task<ActionResult<ProductDto>> GetProductById(Guid id)
         {
-            var entity = await _sqlContext.Products.Include(p => p.Category).Where(p => p.Id == id).FirstOrDefaultAsync();
+            var entity = await _sqlContext.Products
+                .Include(p => p.Category)
+                .Where(p => p.Id == id)
+                .FirstOrDefaultAsync();
 
             if (entity is null)
             {
@@ -66,18 +61,35 @@ namespace KenkataWebshop.WebApi.Controllers
             }
 
             var dto = entity.MapToDto();
+
             return Ok(dto);
+        }
+
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<ProductDto>>> GetAllProducts()
+        {
+            var entities = await _sqlContext.Products
+                .Include(p => p.Category)
+                .ToListAsync();
+
+            var dtos = entities.MapToDto();
+
+            return Ok(dtos);
         }
 
         [HttpPut("{id}")]
         public async Task<ActionResult> UpdateProduct(Guid id, ProductDto productDto)
         {
-            var entity = await _sqlContext.Products.Include(p => p.Category).Where(p => p.Id == id).FirstOrDefaultAsync();
+            var entity = await _sqlContext.Products
+                .Include(p => p.Category)
+                .Where(p => p.Id == id)
+                .FirstOrDefaultAsync();
 
             if (entity is null)
             {
-                return BadRequest();
+                return NotFound();
             }
+
             entity.ArticleNumber = productDto.ArticleNumber;
             entity.Name = productDto.Name;
             entity.Description = productDto.Description;
@@ -91,7 +103,9 @@ namespace KenkataWebshop.WebApi.Controllers
 
             if (entity.Category.Name != productDto.Category)
             {
-                var categoryEntity = await _sqlContext.Categories.Where(c => c.Name == productDto.Category).FirstOrDefaultAsync();
+                var categoryEntity = await _sqlContext.Categories
+                    .Where(c => c.Name == productDto.Category)
+                    .FirstOrDefaultAsync();
 
                 if (categoryEntity is null)
                 {
@@ -102,9 +116,9 @@ namespace KenkataWebshop.WebApi.Controllers
 
                     _sqlContext.Categories.Add(categoryEntity);
                     await _sqlContext.SaveChangesAsync();
-                }                    
-                entity.CategoryId = categoryEntity.Id;
+                }
 
+                entity.CategoryId = categoryEntity.Id;
             }
 
             await _sqlContext.SaveChangesAsync();
@@ -115,7 +129,9 @@ namespace KenkataWebshop.WebApi.Controllers
         [HttpDelete("{id}")]
         public async Task<ActionResult> DeleteProduct(Guid id)
         {
-            var entity = await _sqlContext.Products.Include(p => p.Category).Where(p => p.Id == id).FirstOrDefaultAsync();
+            var entity = await _sqlContext.Products
+                .Where(p => p.Id == id)
+                .FirstOrDefaultAsync();
 
             if (entity is null)
             {
