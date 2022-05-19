@@ -32,10 +32,11 @@ namespace KenKataWebshop.UnitTests
         public void Mapping_CategoryEntity_To_CategoryDto()
         {
             //Arrange
+            var id = Guid.NewGuid();
             var name = "Awesome Stuff";
             var entity = new CategoryEntity
             {
-                Id = Guid.NewGuid(),
+                Id = id,
                 Name = name,
                 Products = new List<ProductEntity>()
             };
@@ -44,6 +45,7 @@ namespace KenKataWebshop.UnitTests
             var dto = entity.MapToDto();
 
             //Assert
+            Assert.Equal(id, dto.Id);
             Assert.Equal(name, dto.Category);
         }
 
@@ -51,12 +53,13 @@ namespace KenKataWebshop.UnitTests
         public void Mapping_List_Of_CategoryEntities_To_List_Of_CategoryDtos()
         {
             //Arrange
+            var id = Guid.NewGuid();
             var name = "Awesome Stuff";
             var entities = new List<CategoryEntity>
             {
                new CategoryEntity
                {
-                Id = Guid.NewGuid(),
+                Id = id,
                 Name = name,
                 Products = new List<ProductEntity>()
                }
@@ -69,6 +72,7 @@ namespace KenKataWebshop.UnitTests
             Assert.Equal(1, dtos.Count());
             
             var dto = dtos.First();
+            Assert.Equal(id, dto.Id);
             Assert.Equal(name, dto.Category);
         }
     }

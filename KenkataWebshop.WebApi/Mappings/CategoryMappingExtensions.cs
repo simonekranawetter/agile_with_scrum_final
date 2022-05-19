@@ -20,6 +20,7 @@ namespace KenkataWebshop.WebApi.Mappings
         {
             var dto = new CategoryDto
             {
+                Id = entity.Id,
                 Category = entity.Name,
                 Products = entity.Products.MapToDto()
             };
