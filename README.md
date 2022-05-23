@@ -4,7 +4,7 @@ This exam is structured in 2 parts.
 
 ## Part 1
 
-Answer the following questions (1 page max) and submit a word document/pdf with those answers (lol I am going with a github repo this time again. Markdown is bae.)
+Answer the following questions (1 page max) and submit a word document/pdf with those answers
 
 + Explain the difference between Agile and Waterfall methods in software development. Explain pros and cons with every method.
 + What does a scrum master do? 
@@ -12,7 +12,7 @@ Answer the following questions (1 page max) and submit a word document/pdf with 
 + What does the role of a product owner entail?
 + What is a sprint?
 
-You can find the answers to part 1 [here](https://github.com/simonekranawetter/agile_with_scrum_final/files/8754386/part1.md)
+You can download the markdown file with the answers to part 1 [here](https://github.com/simonekranawetter/agile_with_scrum_final/files/8754386/part1.md)
 
 ## Part 2
 
@@ -33,4 +33,4 @@ For this part of the exam you should comment on one of the activities you have d
 + Write down a revision of your time estimation for this activity. How long did you think this activity would take and how long did it take you? What happened?
 
 
-You can find the answers to part 2 [here](https://github.com/simonekranawetter/agile_with_scrum_final/files/8754388/part2.md)
+You can download the markdown file with the answers to part 2 [here](https://github.com/simonekranawetter/agile_with_scrum_final/files/8754388/part2.md)
