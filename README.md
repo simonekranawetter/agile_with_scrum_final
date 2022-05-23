@@ -1,20 +1,36 @@
 # Introduction 
-TODO: Give a short introduction of your project. Let this section explain the objectives or the motivation behind this project. 
 
-# Getting Started
-TODO: Guide users through getting your code up and running on their own system. In this section you can talk about:
-1.	Installation process
-2.	Software dependencies
-3.	Latest releases
-4.	API references
+This exam is structured in 2 parts. 
 
-# Build and Test
-TODO: Describe and show how to build your code and run the tests. 
+## Part 1
 
-# Contribute
-TODO: Explain how other users and developers can contribute to make your code better. 
+Answer the following questions (1 page max) and submit a word document/pdf with those answers (lol I am going with a github repo this time again. Markdown is bae.)
 
-If you want to learn more about creating good readme files then refer the following [guidelines](https://docs.microsoft.com/en-us/azure/devops/repos/git/create-a-readme?view=azure-devops). You can also seek inspiration from the below readme files:
-- [ASP.NET Core](https://github.com/aspnet/Home)
-- [Visual Studio Code](https://github.com/Microsoft/vscode)
-- [Chakra Core](https://github.com/Microsoft/ChakraCore)
++ Explain the difference between Agile and Waterfall methods in software development. Explain pros and cons with every method.
++ What does a scrum master do? 
++ Why should you write a manifest before you start development?
++ What does the role of a product owner entail?
++ What is a sprint?
+
+You can find the answers to part 1 [here](https://github.com/simonekranawetter/agile_with_scrum_final/files/8754386/part1.md)
+
+## Part 2
+
+For this part of the exam you should comment on one of the activities you have done with your group for your group project. It's important that this activity you've completed is in it's own branch and you send the link to the branch when you submit for grading. 
+
+### For the passing grade
+
++ Explain what exactly your product backlog item entails and how your workflow looks like
+
++ Develop your chosen backlog item with good code structure. What you chose to develop is up to you and depends on what your activity is about. Maybe it's only frontend and graphic or maybe it's only backend or both. 
+
++ Have an agile workflow. There should be multiple git commits on your branch on GitHub.
+
+### For the good grade
+
++ Have at least one unit test
+
++ Write down a revision of your time estimation for this activity. How long did you think this activity would take and how long did it take you? What happened?
+
+
+You can find the answers to part 2 [here](https://github.com/simonekranawetter/agile_with_scrum_final/files/8754388/part2.md)
